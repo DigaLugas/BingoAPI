@@ -1,11 +1,11 @@
 package com.digas.bingo.entity;
 
 import java.util.Collections;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.Stack;
 
 public class Sorteador {
-    private List<Integer> bolas = new ArrayList<>();
+    private final Stack<Integer> bolas = new Stack<>();
 
     public Sorteador() {
         for (int i = 1; i <= 75; i++) {
@@ -13,15 +13,15 @@ public class Sorteador {
         }
     }
 
-    public void shuffle() {
+    private void shuffle() {
         Collections.shuffle(bolas);
     }
 
     public int mostrar() {
         if (!bolas.isEmpty()) {
-            return bolas.remove(0);
+            return bolas.pop();
         } else {
-            throw new IllegalStateException("No more balls to draw");
+            throw new IllegalStateException("Sem bolas para sortear");
         }
     }
 }
